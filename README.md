@@ -21,7 +21,7 @@
   #   chore    : 기타 변경사항 (빌드 스크립트 수정, 에셋 추가 등)
   ```
   
-  ## 🛠 기술 스택
+## 🛠 기술 스택
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=flat-square&logo=Styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=Prettier&logoColor=white"/> <img src="https://img.shields.io/badge/Eslint-4B3263?style=flat-square&logo=Eslint&logoColor=white"/>
 
 ```
@@ -35,6 +35,13 @@
 "styled-components": "^5.3.3",
 "styled-reset": "^4.3.4",
 "web-vitals": "^1.0.1"
+```
+
+## 💻 실행
+
+```
+$ npm install
+$ npm start
 ```
 
 ## ❤ 개발자 소개
