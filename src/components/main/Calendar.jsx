@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { LeftOff, LeftOn, RightOn, RightOff } from "../../assets/index";
+import { LeftOff, RightOff } from "../../assets/index";
 
 const Calendar = ({ currYear, setCurrYear, currMonth, setCurrMonth }) => {
   const DAY = ["SUN", "MON", "TUE", "WED", "THR", "FRI", "SAT"];
@@ -24,8 +24,8 @@ const Calendar = ({ currYear, setCurrYear, currMonth, setCurrMonth }) => {
     <StyledRoot>
       <div className="calendar">
         <img className="calendar__left" src={LeftOff} alt="" onClick={onClickLeft} />
-        <div className="calendar__year">{currYear}년</div>
-        <div className="calendar__month">{currMonth}월</div>
+        <div className="calendar__year">{currYear}.</div>
+        <div className="calendar__month">{currMonth}</div>
         <img className="calendar__right" src={RightOff} alt="" onClick={onClickRight} />
       </div>
       <Days>
@@ -50,19 +50,13 @@ const StyledRoot = styled.div`
       display: flex;
       cursor: pointer;
     }
-    &__left:hover {
-      background-image: url(${LeftOn});
-    }
-    &__right:hover {
-      background-image: url(${RightOn});
-    }
     &__year,
     &__month {
       display: flex;
       color: #ff6813;
-      font-size: 20px;
+      font-size: 30px;
       font-weight: bold;
-      margin: 0 8px 5px;
+      margin: 0 0 5px;
     }
   }
 `;
