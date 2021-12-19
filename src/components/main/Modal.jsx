@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { closeIcon } from "../../assets";
 
 const Modal = (props) => {
-  const { setOpenModal, openModal, isBlur } = props;
+  const { setOpenModal, openModal } = props;
 
   function timeForToday(value) {
     const today = new Date();
@@ -17,7 +17,7 @@ const Modal = (props) => {
   }
 
   return (
-    <Root isBlur={isBlur}>
+    <Root>
       {openModal && (
         <div>
           <ModalWrapper>
@@ -26,7 +26,8 @@ const Modal = (props) => {
               <Title>
                 <div>{props.modalName}</div>
                 <Period>
-                  {props.modalStart.slice(0, 10)} ~ {props.modalEnd.slice(0, 10)}
+                  {props.modalStart.slice(0, 10)} {props.modalStart.slice(11, 16)} ~ {props.modalEnd.slice(0, 10)}{" "}
+                  {props.modalEnd.slice(11, 16)}
                   <div>({timeForToday(props.modalEnd)})</div>
                 </Period>
               </Title>
@@ -60,7 +61,7 @@ const Root = styled.div`
     margin: auto;
     width: 100%;
     height: 100%;
-    background-color: #d8d8d8;
+    background-color: #d8d8d869;
     z-index: 100;
   }
 `;
@@ -74,11 +75,14 @@ const Icon = styled.img`
 `;
 const Header = styled.div`
   display: flex;
+  margin: 40px;
 `;
 const Title = styled.div`
   & > div {
     display: flex;
     margin: 20px 40px 20px 10px;
+    color: #777777;
+    font-weight: bold;
   }
 `;
 const Period = styled.div`
@@ -89,15 +93,17 @@ const Period = styled.div`
   }
 `;
 const Content = styled.div`
-  width: 100%;
+  width: auto;
   height: 100%;
   overflow: auto;
+  margin: 10px 10px 20px 10px;
 `;
 
 const LogoImg = styled.img`
   display: flex;
   width: 100px;
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const ModalWrapper = styled.div`
@@ -107,8 +113,8 @@ const ModalWrapper = styled.div`
   bottom: 0;
   left: 0;
   margin: auto;
-  border-radius: 16px;
-  border: solid 1px black;
+  border-radius: 10px;
+  border: none;
   background-color: white;
   width: 50%;
   height: auto;
