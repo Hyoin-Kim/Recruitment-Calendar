@@ -49,6 +49,7 @@ const StyledRoot = styled.div`
     &__right {
       display: flex;
       cursor: pointer;
+      margin: 0px 10px 0px 10px;
     }
     &__year,
     &__month {

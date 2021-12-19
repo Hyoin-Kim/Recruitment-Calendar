@@ -31,7 +31,7 @@ const StyledRoot = styled.div`
     margin: 10px;
     cursor: pointer;
     width: 15vw;
-    height: 10vh;
+    height: 9vh;
   }
   & > hr {
     opacity: 40%;
