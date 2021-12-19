@@ -22,52 +22,44 @@ const Dates = (props) => {
   useEffect(() => {
     dataList();
   }, []);
-
   return (
     <>
-      <DateWrapper
-        onDoubleClick={() => {
-          setOpenModal(true);
-        }}>
+      <DateWrapper>
         <DateNum idx={idx} lastDate={lastDate} firstDate={firstDate}>
           {elm}
         </DateNum>
         <Lists>
-          {informationData?.map((list, index) => {
-            return (
-              <>
-                {informationData[index].start_time.slice(0, 10) === dateKey ? (
-                  <StartInfo
-                    openModal={openModal}
-                    setOpenModal={setOpenModal}
-                    image={informationData[index].image}
-                    name={informationData[index].name}
-                    start={informationData[index].start_time}
-                    end={informationData[index].end_time}
-                    content={informationData[index].content}
-                    key={informationData[index].id}
-                    onClick={() => {
-                      setOpenModal(true);
-                    }}
-                  />
-                ) : informationData[index].end_time.slice(0, 10) === dateKey ? (
-                  <EndInfo
-                    openModal={openModal}
-                    setOpenModal={setOpenModal}
-                    image={informationData[index].image}
-                    name={informationData[index].name}
-                    start={informationData[index].start_time}
-                    end={informationData[index].end_time}
-                    content={informationData[index].content}
-                    key={informationData[index].id}
-                    onClick={() => {
-                      setOpenModal(true);
-                    }}
-                  />
-                ) : null}
-              </>
-            );
-          })}
+          {informationData
+            ?.map((list, index) => {
+              return (
+                <>
+                  {informationData[index].start_time.slice(0, 10) === dateKey ? (
+                    <StartInfo
+                      openModal={openModal}
+                      setOpenModal={setOpenModal}
+                      image={informationData[index].image}
+                      name={informationData[index].name}
+                      start={informationData[index].start_time}
+                      end={informationData[index].end_time}
+                      content={informationData[index].content}
+                      key={informationData[index].id}
+                    />
+                  ) : informationData[index].end_time.slice(0, 10) === dateKey ? (
+                    <EndInfo
+                      openModal={openModal}
+                      setOpenModal={setOpenModal}
+                      image={informationData[index].image}
+                      name={informationData[index].name}
+                      start={informationData[index].start_time}
+                      end={informationData[index].end_time}
+                      content={informationData[index].content}
+                      key={informationData[index].id}
+                    />
+                  ) : null}
+                </>
+              );
+            })
+            .sort()}
         </Lists>
       </DateWrapper>
     </>
@@ -78,9 +70,12 @@ function StartInfo(props) {
   const { setOpenModal, openModal } = props;
   return (
     <>
-      <List>
+      <StartList
+        onClick={() => {
+          setOpenModal(true);
+        }}>
         <div>시</div> {props.name}
-      </List>
+      </StartList>
       {openModal && (
         <Modal
           modalImage={props.image}
@@ -102,9 +97,13 @@ function EndInfo(props) {
   const { setOpenModal, openModal } = props;
   return (
     <>
-      <List>
+      <EndList
+        onClick={() => {
+          setOpenModal(true);
+          console.log(props.name);
+        }}>
         <div>끝</div> {props.name}
-      </List>
+      </EndList>
       {openModal && (
         <Modal
           modalImage={props.image}
@@ -151,7 +150,7 @@ const Lists = styled.div`
   flex-direction: column;
   text-align: left;
 `;
-const List = styled.span`
+const StartList = styled.div`
   margin-top: 0.3vw;
   padding-left: 0.5vw;
   font-size: 1vw;
@@ -161,8 +160,33 @@ const List = styled.span`
 
   & > div {
     display: flex;
-    color: #ff4000;
+    color: #ffffff;
+    background-color: #ff6813;
+    max-height: 3vh;
+    min-width: 1.2vw;
+    margin-right: 3px;
+    border-radius: 5px;
+    place-content: center;
   }
 `;
 
+const EndList = styled.div`
+  margin-top: 0.3vw;
+  padding-left: 0.5vw;
+  font-size: 1vw;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+
+  & > div {
+    display: flex;
+    color: #ffffff;
+    background-color: #3f4b5e;
+    max-height: 3vh;
+    min-width: 1.2vw;
+    margin-right: 3px;
+    border-radius: 5px;
+    place-content: center;
+  }
+`;
 export default Dates;
