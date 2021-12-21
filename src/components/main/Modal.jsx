@@ -5,13 +5,20 @@ import { closeIcon } from "../../assets";
 const Modal = (props) => {
   const { setOpenModal, openModal, modalName, modalImage, modalStart, modalEnd, modalContent } = props;
 
-  function timeForToday(value) {
+  function timeForToday(endValue) {
     const today = new Date();
-    const timeValue = new Date(value);
+    const endTimeValue = new Date(endValue);
 
-    const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+    const betweenTime = Math.floor((today.getTime() - endTimeValue.getTime()) / 1000 / 60);
     const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-    return `${betweenTimeDay}일 지남`;
+
+    if (today === endTimeValue) {
+      return `오늘 마감`;
+    } else if (betweenTimeDay > 0) {
+      return `${betweenTimeDay}일 지남`;
+    } else if (betweenTimeDay < 0) {
+      return `${-betweenTimeDay}일 전`;
+    }
   }
 
   return (
