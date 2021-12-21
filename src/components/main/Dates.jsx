@@ -67,26 +67,25 @@ const Dates = (props) => {
 };
 
 function StartInfo(props) {
-  const { setOpenModal, openModal } = props;
+  const { setOpenModal, openModal, image, name, start, end, content, id } = props;
   return (
     <>
       <StartList
         onClick={() => {
           setOpenModal(true);
         }}>
-        <div>시</div> {props.name}
+        <div>시</div> {name}
       </StartList>
       {openModal && (
         <Modal
-          modalImage={props.image}
-          modalName={props.name}
-          modalStart={props.start}
-          modalEnd={props.end}
-          modalContent={props.content}
-          modalKey={props.id}
+          modalImage={image}
+          modalName={name}
+          modalStart={start}
+          modalEnd={end}
+          modalContent={content}
+          modalKey={id}
           setOpenModal={setOpenModal}
           openModal={openModal}
-          isBlur={true}
         />
       )}
     </>
@@ -94,27 +93,25 @@ function StartInfo(props) {
 }
 
 function EndInfo(props) {
-  const { setOpenModal, openModal } = props;
+  const { setOpenModal, openModal, image, name, start, end, content, id } = props;
   return (
     <>
       <EndList
         onClick={() => {
           setOpenModal(true);
-          console.log(props.name);
         }}>
-        <div>끝</div> {props.name}
+        <div>끝</div> {name}
       </EndList>
       {openModal && (
         <Modal
-          modalImage={props.image}
-          modalName={props.name}
-          modalStart={props.start}
-          modalEnd={props.end}
-          modalContent={props.content}
-          modalKey={props.id}
+          modalImage={image}
+          modalName={name}
+          modalStart={start}
+          modalEnd={end}
+          modalContent={content}
+          modalKey={id}
           setOpenModal={setOpenModal}
           openModal={openModal}
-          isBlur={true}
         />
       )}
     </>

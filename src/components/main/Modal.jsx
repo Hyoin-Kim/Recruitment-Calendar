@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { closeIcon } from "../../assets";
 
 const Modal = (props) => {
-  const { setOpenModal, openModal } = props;
+  const { setOpenModal, openModal, modalName, modalImage, modalStart, modalEnd, modalContent } = props;
 
   function timeForToday(value) {
     const today = new Date();
@@ -11,9 +11,7 @@ const Modal = (props) => {
 
     const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
     const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-    if (betweenTimeDay < 365) {
-      return `${betweenTimeDay}일 지남`;
-    }
+    return `${betweenTimeDay}일 지남`;
   }
 
   return (
@@ -22,13 +20,13 @@ const Modal = (props) => {
         <div>
           <ModalWrapper>
             <Header>
-              <LogoImg src={props.modalImage} alt="" />
+              <LogoImg src={modalImage} alt="" />
               <Title>
-                <div>{props.modalName}</div>
+                <div>{modalName}</div>
                 <Period>
-                  {props.modalStart.slice(0, 10)} {props.modalStart.slice(11, 16)} ~ {props.modalEnd.slice(0, 10)}{" "}
-                  {props.modalEnd.slice(11, 16)}
-                  <div>({timeForToday(props.modalEnd)})</div>
+                  {modalStart.slice(0, 10)} {modalStart.slice(11, 16)} ~ {modalEnd.slice(0, 10)}{" "}
+                  {modalEnd.slice(11, 16)}
+                  <div>({timeForToday(modalEnd)})</div>
                 </Period>
               </Title>
               <hr />
@@ -41,7 +39,7 @@ const Modal = (props) => {
                 }}
               />
             </Header>
-            <Content dangerouslySetInnerHTML={{ __html: props.modalContent }}></Content>
+            <Content dangerouslySetInnerHTML={{ __html: modalContent }}></Content>
           </ModalWrapper>
         </div>
       )}
