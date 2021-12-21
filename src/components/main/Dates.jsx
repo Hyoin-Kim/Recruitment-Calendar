@@ -154,6 +154,7 @@ const Lists = styled.div`
   flex-direction: column;
   text-align: left;
 `;
+
 const StartList = styled.div`
   margin-top: 0.3vw;
   padding-left: 0.5vw;

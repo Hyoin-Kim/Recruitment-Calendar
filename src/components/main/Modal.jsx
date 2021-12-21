@@ -78,10 +78,12 @@ const Icon = styled.img`
   margin: 10px;
   cursor: pointer;
 `;
+
 const Header = styled.div`
   display: flex;
   margin: 40px;
 `;
+
 const Title = styled.div`
   & > div {
     display: flex;
@@ -90,6 +92,7 @@ const Title = styled.div`
     font-weight: bold;
   }
 `;
+
 const Period = styled.div`
   & > div {
     color: #fe642e;
@@ -97,6 +100,7 @@ const Period = styled.div`
     margin-left: 10px;
   }
 `;
+
 const Content = styled.div`
   width: auto;
   height: 100%;
