@@ -22,12 +22,12 @@ const Calendar = ({ currYear, setCurrYear, currMonth, setCurrMonth }) => {
   }
   return (
     <StyledRoot>
-      <div className="calendar">
-        <img className="calendar__left" src={LeftOff} alt="" onClick={onClickLeft} />
-        <div className="calendar__year">{currYear}.</div>
-        <div className="calendar__month">{currMonth}</div>
-        <img className="calendar__right" src={RightOff} alt="" onClick={onClickRight} />
-      </div>
+      <CalendarWrapper>
+        <img src={LeftOff} alt="" onClick={onClickLeft} />
+        <div>{currYear}.</div>
+        <div>{currMonth}</div>
+        <img src={RightOff} alt="" onClick={onClickRight} />
+      </CalendarWrapper>
       <Days>
         {DAY.map((elm, idx) => {
           return <Day key={idx}>{elm}</Day>;
@@ -41,26 +41,26 @@ export default Calendar;
 
 const StyledRoot = styled.div`
   margin-top: 2vh;
-  .calendar {
-    display: flex;
-    justify-content: center;
+`;
 
-    &__left,
-    &__right {
-      display: flex;
-      cursor: pointer;
-      margin: 0px 10px 0px 10px;
-    }
-    &__year,
-    &__month {
-      display: flex;
-      color: #ff6813;
-      font-size: 30px;
-      font-weight: bold;
-      margin: 0 0 5px;
-    }
+const CalendarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  & > img {
+    display: flex;
+    cursor: pointer;
+    margin: 0px 10px 0px 10px;
+  }
+  & > div {
+    display: flex;
+    color: #ff6813;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 5px;
   }
 `;
+
 const Days = styled.div`
   display: flex;
   margin-top: 1.5vw;
