@@ -30,6 +30,7 @@ const Dates = (props) => {
         </DateNum>
         <Lists>
           {informationData
+            .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
             ?.map((list, index) => {
               return (
                 <>
@@ -42,9 +43,18 @@ const Dates = (props) => {
                       start={informationData[index].start_time}
                       end={informationData[index].end_time}
                       content={informationData[index].content}
-                      key={informationData[index].id}
+                      id={informationData[index].id}
                     />
-                  ) : informationData[index].end_time.slice(0, 10) === dateKey ? (
+                  ) : null}
+                </>
+              );
+            })}
+          {informationData
+            .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
+            ?.map((list, index) => {
+              return (
+                <>
+                  {informationData[index].end_time.slice(0, 10) === dateKey ? (
                     <EndInfo
                       openModal={openModal}
                       setOpenModal={setOpenModal}
@@ -53,13 +63,12 @@ const Dates = (props) => {
                       start={informationData[index].start_time}
                       end={informationData[index].end_time}
                       content={informationData[index].content}
-                      key={informationData[index].id}
+                      id={informationData[index].id}
                     />
                   ) : null}
                 </>
               );
-            })
-            .sort()}
+            })}
         </Lists>
       </DateWrapper>
     </>
@@ -102,18 +111,16 @@ function EndInfo(props) {
         }}>
         <div>끝</div> {name}
       </EndList>
-      {openModal && (
-        <Modal
-          modalImage={image}
-          modalName={name}
-          modalStart={start}
-          modalEnd={end}
-          modalContent={content}
-          modalKey={id}
-          setOpenModal={setOpenModal}
-          openModal={openModal}
-        />
-      )}
+      <Modal
+        modalImage={image}
+        modalName={name}
+        modalStart={start}
+        modalEnd={end}
+        modalContent={content}
+        modalKey={id}
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+      />
     </>
   );
 }
